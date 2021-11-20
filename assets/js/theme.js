@@ -14,13 +14,11 @@
   if (
     (console.log(e),
     e && t("body").addClass("is-mobile"),
-    t("body").hasClass("tt-transition"))
-  ) {
-    t(window).on("load", function () {
-      setTimeout(function () {
-        !(function () {
-          var e = gsap.timeline();
-          e.to(".ptr-preloader", {
+    t("body").hasClass("tt-transition") &&
+      (t(window).on("load", function () {
+        setTimeout(function () {
+          var e;
+          (e = gsap.timeline()).to(".ptr-preloader", {
             duration: 1.5,
             autoAlpha: 0,
             ease: Expo.easeInOut,
@@ -71,103 +69,102 @@
                       clearProps: "all",
                     },
                     1.2
-                  ));
-          t(".ph-appear").length &&
+                  )),
+            t(".ph-appear").length &&
+              e.from(
+                ".ph-appear",
+                {
+                  duration: 2,
+                  y: 60,
+                  autoAlpha: 0,
+                  stagger: 0.3,
+                  ease: Expo.easeOut,
+                  clearProps: "all",
+                },
+                1.5
+              ),
+            t("#page-header .project-info-list").length &&
+              (t("#page-header").hasClass("ph-inline")
+                ? e.from(
+                    "#page-header .project-info-list > ul > li",
+                    {
+                      duration: 2,
+                      y: 80,
+                      autoAlpha: 0,
+                      stagger: 0.15,
+                      ease: Expo.easeOut,
+                      clearProps: "all",
+                    },
+                    2.2
+                  )
+                : e.from(
+                    "#page-header .project-info-list > ul",
+                    {
+                      duration: 2,
+                      y: 80,
+                      autoAlpha: 0,
+                      ease: Expo.easeOut,
+                      clearProps: "all",
+                    },
+                    2.2
+                  )),
+            t(".tt-psc-elem").length &&
+              (t(".tt-psc-elem").wrap('<div class="tt-ps-appear"></div>'),
+              e.from(
+                ".tt-ps-appear",
+                {
+                  duration: 2,
+                  y: 80,
+                  autoAlpha: 0,
+                  stagger: 0.3,
+                  ease: Expo.easeOut,
+                  clearProps: "all",
+                },
+                1.4
+              )),
+            t(".tt-pci-title").length &&
+              e.from(
+                ".tt-pci-title",
+                {
+                  duration: 2,
+                  x: 80,
+                  autoAlpha: 0,
+                  skewX: "-10deg",
+                  ease: Expo.easeOut,
+                  clearProps: "all",
+                },
+                1.4
+              ),
+            t(".tt-pci-category").length &&
+              e.from(
+                ".tt-pci-category",
+                {
+                  duration: 2,
+                  x: 80,
+                  autoAlpha: 0,
+                  ease: Expo.easeOut,
+                  clearProps: "all",
+                },
+                1.5
+              ),
             e.from(
-              ".ph-appear",
+              "#page-content",
               {
                 duration: 2,
-                y: 60,
                 autoAlpha: 0,
-                stagger: 0.3,
-                ease: Expo.easeOut,
-                clearProps: "all",
-              },
-              1.5
-            );
-          t("#page-header .project-info-list").length &&
-            (t("#page-header").hasClass("ph-inline")
-              ? e.from(
-                  "#page-header .project-info-list > ul > li",
-                  {
-                    duration: 2,
-                    y: 80,
-                    autoAlpha: 0,
-                    stagger: 0.15,
-                    ease: Expo.easeOut,
-                    clearProps: "all",
-                  },
-                  2.2
-                )
-              : e.from(
-                  "#page-header .project-info-list > ul",
-                  {
-                    duration: 2,
-                    y: 80,
-                    autoAlpha: 0,
-                    ease: Expo.easeOut,
-                    clearProps: "all",
-                  },
-                  2.2
-                ));
-          t(".tt-psc-elem").length &&
-            (t(".tt-psc-elem").wrap('<div class="tt-ps-appear"></div>'),
-            e.from(
-              ".tt-ps-appear",
-              {
-                duration: 2,
                 y: 80,
-                autoAlpha: 0,
-                stagger: 0.3,
                 ease: Expo.easeOut,
                 clearProps: "all",
               },
-              1.4
-            ));
-          t(".tt-pci-title").length &&
-            e.from(
-              ".tt-pci-title",
-              {
-                duration: 2,
-                x: 80,
-                autoAlpha: 0,
-                skewX: "-10deg",
-                ease: Expo.easeOut,
-                clearProps: "all",
-              },
-              1.4
-            );
-          t(".tt-pci-category").length &&
-            e.from(
-              ".tt-pci-category",
-              {
-                duration: 2,
-                x: 80,
-                autoAlpha: 0,
-                ease: Expo.easeOut,
-                clearProps: "all",
-              },
-              1.5
-            );
-          e.from(
-            "#page-content",
-            {
-              duration: 2,
-              autoAlpha: 0,
-              y: 80,
-              ease: Expo.easeOut,
-              clearProps: "all",
-            },
-            0.8
-          ),
+              0.8
+            ),
             e.set("#page-transition", {
               duration: 1.5,
               autoAlpha: 0,
               ease: Expo.easeInOut,
             });
-        })();
-      }, 0);
-    }),
+        }, 0);
+      }),
       t("a")
         .not('[target="_blank"]')
         .not('[href^="#"]')
@@ -196,9 +193,9 @@
             e.to("#content-wrap", { y: -80, autoAlpha: 0 }, 0),
             e.to("#tt-header", { y: -20, autoAlpha: 0 }, 0),
             e.to(".ptr-preloader", { autoAlpha: 1 }, 0.4);
-        });
-  }
-  if (t("body").hasClass("tt-smooth-scroll") && !e) {
+        })),
+    t("body").hasClass("tt-smooth-scroll") && !e)
+  ) {
     var a = window.Scrollbar;
     a.init(document.querySelector("#scroll-container"), {
       damping: 0.05,
@@ -208,18 +205,18 @@
     });
     let e = 0,
       o = 0,
-      n = a.init(document.getElementById("scroll-container"));
-    n.addListener(({ offset: t }) => {
+      r = a.init(document.getElementById("scroll-container"));
+    r.addListener(({ offset: t }) => {
       (e = t.x), (o = t.y);
     }),
-      n.setPosition(0, 0),
-      n.track.xAxis.element.remove(),
+      r.setPosition(0, 0),
+      r.track.xAxis.element.remove(),
       ScrollTrigger.scrollerProxy("body", {
         scrollTop(t) {
-          return arguments.length && (n.scrollTop = t), n.scrollTop;
+          return arguments.length && (r.scrollTop = t), r.scrollTop;
         },
       }),
-      n.addListener(ScrollTrigger.update),
+      r.addListener(ScrollTrigger.update),
       t("#tt-header").hasClass("tt-header-fixed") &&
         t("#tt-header").prependTo(t("#body-inner"));
   }
@@ -231,73 +228,72 @@
       t("a.magnetic-item").length &&
         t("a.magnetic-item").addClass("not-hide-cursor");
     var o = { x: 0, y: 0 },
-      n = { x: 0, y: 0 },
-      i = 0.15,
-      r = !1,
-      s = t("#ball"),
-      l = 1,
-      d = 0.5;
-    gsap.set(s, {
+      r = { x: 0, y: 0 },
+      i = !1,
+      n = t("#ball"),
+      s = 1,
+      l = 0.5;
+    gsap.set(n, {
       xPercent: -50,
       yPercent: -50,
       width: 34,
       height: 34,
       borderWidth: 2,
-      opacity: d,
+      opacity: l,
     }),
       document.addEventListener("mousemove", function (t) {
         (o.x = t.clientX), (o.y = t.clientY);
       }),
       gsap.ticker.add(function () {
-        r ||
-          ((n.x += (o.x - n.x) * i),
-          (n.y += (o.y - n.y) * i),
-          gsap.set(s, { x: n.x, y: n.y }));
+        i ||
+          ((r.x += 0.15 * (o.x - r.x)),
+          (r.y += 0.15 * (o.y - r.y)),
+          gsap.set(n, { x: r.x, y: r.y }));
       }),
       t(".magnetic-wrap").mousemove(function (t) {
         !(function (t, e, a) {
           var o = e.getBoundingClientRect(),
             i = t.clientX - o.left,
-            r = t.clientY - o.top;
-          (n.x = o.left + o.width / 2 + (i - o.width / 2) / a),
-            (n.y = o.top + o.height / 2 + (r - o.height / 2) / a),
-            gsap.to(s, { duration: 0.3, x: n.x, y: n.y });
-        })(t, this, 2),
+            s = t.clientY - o.top;
+          (r.x = o.left + o.width / 2 + (i - o.width / 2) / 2),
+            (r.y = o.top + o.height / 2 + (s - o.height / 2) / 2),
+            gsap.to(n, { duration: 0.3, x: r.x, y: r.y });
+        })(t, this),
           (function (t, e) {
             !(function (t, e, a, o) {
-              var n = e.getBoundingClientRect(),
-                i = t.clientX - n.left,
-                r = t.clientY - n.top;
+              var r = e.getBoundingClientRect(),
+                i = t.clientX - r.left,
+                n = t.clientY - r.top;
               gsap.to(a, {
                 duration: 0.3,
-                x: ((i - n.width / 2) / n.width) * o,
-                y: ((r - n.height / 2) / n.height) * o,
+                x: ((i - r.width / 2) / r.width) * 25,
+                y: ((n - r.height / 2) / r.height) * 25,
                 ease: Power2.easeOut,
               });
-            })(t, e, e.querySelector(".magnetic-item"), 25);
+            })(t, e, e.querySelector(".magnetic-item"));
           })(t, this);
       }),
       t(".magnetic-wrap")
         .on("mouseenter", function (t) {
-          gsap.to(s, { duration: 0.3, scale: 2, borderWidth: 1, opacity: d }),
-            (r = !0);
+          gsap.to(n, { duration: 0.3, scale: 2, borderWidth: 1, opacity: l }),
+            (i = !0);
         })
         .on("mouseleave", function (t) {
-          gsap.to(s, { duration: 0.3, scale: l, borderWidth: 2, opacity: d }),
+          gsap.to(n, { duration: 0.3, scale: s, borderWidth: 2, opacity: l }),
             gsap.to(this.querySelector(".magnetic-item"), {
               duration: 0.3,
               x: 0,
               y: 0,
               clearProps: "all",
             }),
-            (r = !1);
+            (i = !1);
         }),
       t(
         ".cursor-alter, .tt-main-menu-list > li > a, .tt-main-menu-list > li > .tt-submenu-trigger > a"
       )
         .not(".magnetic-item")
         .on("mouseenter", function () {
-          gsap.to(s, {
+          gsap.to(n, {
             duration: 0.3,
             borderWidth: 0,
             opacity: 0.2,
@@ -307,10 +303,10 @@
           });
         })
         .on("mouseleave", function () {
-          gsap.to(s, {
+          gsap.to(n, {
             duration: 0.3,
             borderWidth: 2,
-            opacity: d,
+            opacity: l,
             backgroundColor: "transparent",
             width: 34,
             height: 34,
@@ -320,7 +316,7 @@
       t("[data-cursor]").each(function () {
         t(this)
           .on("mouseenter", function () {
-            s.append('<div class="ball-view"></div>'),
+            n.append('<div class="ball-view"></div>'),
               t(".ball-view").append(t(this).attr("data-cursor")),
               gsap.to(ball, {
                 duration: 0.3,
@@ -339,7 +335,7 @@
               yPercent: -50,
               width: 34,
               height: 34,
-              opacity: d,
+              opacity: l,
               borderWidth: 2,
               backgroundColor: "transparent",
             }),
@@ -349,7 +345,7 @@
                 autoAlpha: 0,
                 clearProps: "all",
               }),
-              s.find(".ball-view").remove();
+              n.find(".ball-view").remove();
           }),
           t(this).addClass("not-hide-cursor");
       }),
@@ -358,8 +354,8 @@
           t(this).parent().hasClass("cursor-drag") &&
           (t(this)
             .on("mouseenter", function () {
-              s.append('<div class="ball-drag"></div>'),
-                gsap.to(s, {
+              n.append('<div class="ball-drag"></div>'),
+                gsap.to(n, {
                   duration: 0.3,
                   width: 60,
                   height: 60,
@@ -367,23 +363,23 @@
                 });
             })
             .on("mouseleave", function () {
-              s.find(".ball-drag").remove(),
-                gsap.to(s, {
+              n.find(".ball-drag").remove(),
+                gsap.to(n, {
                   duration: 0.3,
                   width: 34,
                   height: 34,
-                  opacity: d,
+                  opacity: l,
                 });
             }),
           t(this).addClass("not-hide-cursor"),
           t(this)
             .find("[data-cursor]")
             .on("mouseenter mouseover", function () {
-              return s.find(".ball-drag").remove(), !1;
+              return n.find(".ball-drag").remove(), !1;
             })
             .on("mouseleave", function () {
-              s.append('<div class="ball-drag"></div>'),
-                gsap.to(s, {
+              n.append('<div class="ball-drag"></div>'),
+                gsap.to(n, {
                   duration: 0.3,
                   width: 60,
                   height: 60,
@@ -397,31 +393,31 @@
           (t(this)
             .on("mousedown pointerdown", function (t) {
               1 === t.which &&
-                (gsap.to(s, {
+                (gsap.to(n, {
                   duration: 0.2,
                   width: 60,
                   height: 60,
                   opacity: 1,
                 }),
-                s.append('<div class="ball-drag"></div>'));
+                n.append('<div class="ball-drag"></div>'));
             })
             .on("mouseup pointerup", function () {
-              s.find(".ball-drag").remove(),
+              n.find(".ball-drag").remove(),
                 t(this).find("[data-cursor]:hover").length ||
-                  gsap.to(s, {
+                  gsap.to(n, {
                     duration: 0.2,
                     width: 34,
                     height: 34,
-                    opacity: d,
+                    opacity: l,
                   });
             })
             .on("mouseleave", function () {
-              s.find(".ball-drag").remove(),
-                gsap.to(s, {
+              n.find(".ball-drag").remove(),
+                gsap.to(n, {
                   duration: 0.2,
                   width: 34,
                   height: 34,
-                  opacity: d,
+                  opacity: l,
                 });
             }),
           t(this)
@@ -432,16 +428,16 @@
           t(this)
             .find("[data-cursor]")
             .on("mouseenter mouseover", function () {
-              return s.find(".ball-drag").remove(), !1;
+              return n.find(".ball-drag").remove(), !1;
             }));
       }),
       t(".cursor-close").each(function () {
         t(this).addClass("ball-close-enabled"),
           t(this)
             .on("mouseenter", function () {
-              s.addClass("ball-close-enabled"),
-                s.append('<div class="ball-close">Close</div>'),
-                gsap.to(s, {
+              n.addClass("ball-close-enabled"),
+                n.append('<div class="ball-close">Close</div>'),
+                gsap.to(n, {
                   duration: 0.3,
                   yPercent: -75,
                   width: 80,
@@ -455,25 +451,25 @@
                 });
             })
             .on("mouseleave click", function () {
-              s.removeClass("ball-close-enabled"),
-                gsap.to(s, {
+              n.removeClass("ball-close-enabled"),
+                gsap.to(n, {
                   duration: 0.3,
                   yPercent: -50,
                   width: 34,
                   height: 34,
-                  opacity: d,
+                  opacity: l,
                 }),
-                s.find(".ball-close").remove();
+                n.find(".ball-close").remove();
             }),
           t(
             ".cursor-close a, .cursor-close button, .cursor-close .tt-btn, .cursor-close .hide-cursor"
           )
             .not(".not-hide-cursor")
             .on("mouseenter", function () {
-              s.removeClass("ball-close-enabled");
+              n.removeClass("ball-close-enabled");
             })
             .on("mouseleave", function () {
-              s.addClass("ball-close-enabled");
+              n.addClass("ball-close-enabled");
             });
       }),
       t(
@@ -484,10 +480,10 @@
         .not(".tt-main-menu-list > li > a")
         .not(".tt-main-menu-list > li > .tt-submenu-trigger > a")
         .on("mouseenter", function () {
-          gsap.to(s, { duration: 0.3, scale: 0, opacity: 0 });
+          gsap.to(n, { duration: 0.3, scale: 0, opacity: 0 });
         })
         .on("mouseleave", function () {
-          gsap.to(s, { duration: 0.3, scale: l, opacity: d });
+          gsap.to(n, { duration: 0.3, scale: s, opacity: l });
         }),
       t("a")
         .not('[target="_blank"]')
@@ -496,7 +492,7 @@
         .not('[href^="tel"]')
         .not(".lg-trigger")
         .on("click", function () {
-          gsap.to(s, { duration: 0.3, scale: 1.3, autoAlpha: 0 });
+          gsap.to(n, { duration: 0.3, scale: 1.3, autoAlpha: 0 });
         }),
       t(document)
         .on("mouseleave", function () {
@@ -533,12 +529,12 @@
                   a.parentNode.removeChild(a), t.removeAttribute("data-src");
                 },
               }),
-              n && n.kill();
+              r && r.kill();
           }),
             (a.src = e),
             ScrollTrigger.refresh(!0);
         },
-        n = ScrollTrigger.create({
+        r = ScrollTrigger.create({
           trigger: t,
           start: "-50% bottom",
           onEnter: o,
@@ -700,9 +696,9 @@
         var e = t(this),
           a = e.data("mousewheel"),
           o = e.data("keyboard"),
-          n = e.data("simulate-touch"),
+          r = e.data("simulate-touch"),
           i = e.data("grab-cursor"),
-          r = e.data("autoplay")
+          n = e.data("autoplay")
             ? { delay: e.data("autoplay") }
             : e.data("autoplay"),
           s = e.data("loop") ? { loopedSlides: 100 } : e.data("loop");
@@ -723,8 +719,8 @@
           speed: 900,
           keyboard: o,
           mousewheel: a,
-          autoplay: r,
-          simulateTouch: n,
+          autoplay: n,
+          simulateTouch: r,
           grabCursor: i,
           loop: s,
           lazy: { loadPrevNext: !0 },
@@ -818,10 +814,10 @@
           o = e.data("autoplay")
             ? { delay: e.data("autoplay") }
             : e.data("autoplay"),
-          n = e.data("loop") ? { loopedSlides: 100 } : e.data("loop");
+          r = e.data("loop") ? { loopedSlides: 100 } : e.data("loop");
         if (e.is("[data-speed]")) var i = e.data("speed");
         else i = 900;
-        var r = new Swiper(e.find(".swiper-container")[0], {
+        var n = new Swiper(e.find(".swiper-container")[0], {
           direction: "horizontal",
           slidesPerView: "auto",
           spaceBetween: 0,
@@ -834,7 +830,7 @@
           speed: i,
           simulateTouch: a,
           autoplay: o,
-          loop: n,
+          loop: r,
           navigation: {
             nextEl: e.find(".tt-ts-nav-next")[0],
             prevEl: e.find(".tt-ts-nav-prev")[0],
@@ -850,7 +846,7 @@
           },
         });
         setTimeout(function () {
-          r.updateAutoHeight();
+          n.updateAutoHeight();
         }, 100),
           e.hasClass("ts-scale-down") &&
             (e
@@ -1069,10 +1065,10 @@
       t("#page-header").is(".ph-bg-image.ph-bg-image-is-light") &&
         t("#tt-header").hasClass("tt-header-fixed"))
     ) {
-      function p() {
+      function d() {
         t("body").removeClass("ph-bg-image-light-on");
       }
-      function c() {
+      function p() {
         t("body").addClass("ph-bg-image-light-on");
       }
       ScrollTrigger.create({
@@ -1081,10 +1077,10 @@
         end: "bottom 30px",
         scrub: !0,
         markers: !1,
-        onLeave: () => p(),
-        onEnter: () => c(),
-        onLeaveBack: () => p(),
-        onEnterBack: () => c(),
+        onLeave: () => d(),
+        onEnter: () => p(),
+        onLeaveBack: () => d(),
+        onEnterBack: () => p(),
       });
     }
   }
@@ -1096,7 +1092,7 @@
     var e = t(this),
       a = e.parents(".anim-image-parallax-wrap"),
       o = a.find(".anim-image-parallax-inner");
-    function n() {
+    function r() {
       ScrollTrigger.refresh();
     }
     gsap.to(e, {
@@ -1108,7 +1104,7 @@
         end: "bottom top",
         scrub: !0,
         markers: !1,
-        onEnter: () => n(),
+        onEnter: () => r(),
       },
     }),
       gsap
@@ -1117,7 +1113,7 @@
             trigger: a,
             start: "top 90%",
             markers: !1,
-            onEnter: () => n(),
+            onEnter: () => r(),
           },
         })
         .from(o, {
@@ -1258,30 +1254,28 @@
       .on("click", function () {
         var o = this.hash;
         if (t("#tt-header").hasClass("tt-header-fixed"))
-          var n = t("#tt-header").height();
-        else n = 0;
-        if (
-          (null != t(this).data("offset") && (n = t(this).data("offset")), e)
-        ) {
-          i = t(o).offset().top - t("body").offset().top - n;
-          gsap.to(t(window), {
-            duration: 2,
-            scrollTo: { y: i, autoKill: !0 },
-            ease: Expo.easeInOut,
-          });
-        } else if (t("body").hasClass("tt-smooth-scroll")) {
+          var r = t("#tt-header").height();
+        else r = 0;
+        if ((null != t(this).data("offset") && (r = t(this).data("offset")), e))
+          (i = t(o).offset().top - t("body").offset().top - r),
+            gsap.to(t(window), {
+              duration: 2,
+              scrollTo: { y: i, autoKill: !0 },
+              ease: Expo.easeInOut,
+            });
+        else if (t("body").hasClass("tt-smooth-scroll")) {
           var i =
               t(o).offset().top -
               t("#scroll-container > .scroll-content").offset().top -
-              n,
-            r = a.init(document.getElementById("scroll-container"));
-          gsap.to(r, {
+              r,
+            n = a.init(document.getElementById("scroll-container"));
+          gsap.to(n, {
             duration: 2,
             scrollTo: { y: i, autoKill: !0 },
             ease: Expo.easeInOut,
           });
         } else {
-          var i = t(o).offset().top - t("body").offset().top - n;
+          i = t(o).offset().top - t("body").offset().top - r;
           gsap.to(t(window), {
             duration: 2,
             scrollTo: { y: i, autoKill: !0 },
@@ -1331,46 +1325,46 @@
       .on("touchend", function () {
         t(this).trigger("hover");
       });
-  var u = document.querySelector("#news-btn"),
-    g = document.querySelector("#news-input"),
-    h = document.querySelector("#news-response");
-  function m() {
-    h.innerHTML = "";
+  var c = document.querySelector("#news-btn"),
+    u = document.querySelector("#news-input"),
+    g = document.querySelector("#news-response");
+  function h() {
+    g.innerHTML = "";
   }
-  u.addEventListener("click", function () {
-    "" !== g.value && g.value.match(/\S+@\S+\.\S+/)
-      ? h.appendChild(
+  c.addEventListener("click", function () {
+    "" !== u.value && u.value.match(/\S+@\S+\.\S+/)
+      ? g.appendChild(
           document.createTextNode(
             "Thanks, you have subscribed to our Newsletter"
           )
         )
-      : window;
-    (g.value = ""), setTimeout(m, 2e3);
-  });
-  new Swiper(".mySwiper", {
-    pagination: { el: ".swiper-pagination", clickable: !0 },
+      : window,
+      (u.value = ""),
+      setTimeout(h, 2e3);
   }),
+    new Swiper(".mySwiper", {
+      pagination: { el: ".swiper-pagination", clickable: !0 },
+    }),
     new Swiper(".Menu-overlay__Swiper", {
       navigation: { nextEl: ".right", prevEl: ".back" },
-    });
-
-  t(
-    ".tt-ol-menu-toggle-btn-text, .tt-ol-menu-toggle-btn, .tt-m-menu-toggle-btn-text, .tt-m-menu-toggle-btn"
-  ).on("click", function () {
-    t("body").toggleClass("tt-demo-btn-active"),
-      t("body").hasClass("tt-demo-btn-active")
-        ? gsap.to(".tt-demo-btn", {
-            duration: 0.3,
-            scale: 1,
-            autoAlpha: 1,
-            delay: 0.8,
-          })
-        : gsap.to(".tt-demo-btn", {
-            duration: 0.3,
-            scale: 0.9,
-            autoAlpha: 0,
-          });
-  }),
+    }),
+    t(
+      ".tt-ol-menu-toggle-btn-text, .tt-ol-menu-toggle-btn, .tt-m-menu-toggle-btn-text, .tt-m-menu-toggle-btn"
+    ).on("click", function () {
+      t("body").toggleClass("tt-demo-btn-active"),
+        t("body").hasClass("tt-demo-btn-active")
+          ? gsap.to(".tt-demo-btn", {
+              duration: 0.3,
+              scale: 1,
+              autoAlpha: 1,
+              delay: 0.8,
+            })
+          : gsap.to(".tt-demo-btn", {
+              duration: 0.3,
+              scale: 0.9,
+              autoAlpha: 0,
+            });
+    }),
     t(".tt-overlay-menu a, .tt-main-menu-list a, .tt-logo a")
       .not('[target="_blank"]')
       .not('[href^="#"]')
@@ -1378,22 +1372,22 @@
       .not('[href^="tel"]')
       .on("click", function () {
         gsap.to(".tt-demo-btn", { duration: 0.3, scale: 0.9, autoAlpha: 0 });
-      });
-  t(".tt-demo-btn").css({
-    position: "fixed",
-    display: "flex",
-    "align-items": "center",
-    right: "15px",
-    bottom: "15px",
-    background: "#6ca12b",
-    color: "#fff",
-    "z-index": "99999",
-    overflow: "hidden",
-    opacity: "0",
-    visibility: "hidden",
-    transform: "scale(0.9)",
-    "border-radius": "100px",
-  }),
+      }),
+    t(".tt-demo-btn").css({
+      position: "fixed",
+      display: "flex",
+      "align-items": "center",
+      right: "15px",
+      bottom: "15px",
+      background: "#6ca12b",
+      color: "#fff",
+      "z-index": "99999",
+      overflow: "hidden",
+      opacity: "0",
+      visibility: "hidden",
+      transform: "scale(0.9)",
+      "border-radius": "100px",
+    }),
     t(".tt-demo-btn-img").css({
       width: "60px",
       height: "60px",
@@ -1416,7 +1410,7 @@
           width: "110px",
           autoAlpha: 1,
         }),
-          gsap.to(s, { duration: 0.3, scale: 0, opacity: 0 });
+          gsap.to(n, { duration: 0.3, scale: 0, opacity: 0 });
       })
       .on("mouseleave", function () {
         gsap.to(".tt-demo-btn-text", {
@@ -1425,46 +1419,36 @@
           autoAlpha: 0,
           clearProps: "autoAlpha, width",
         }),
-          gsap.to(s, { duration: 0.3, scale: l, opacity: d });
+          gsap.to(n, { duration: 0.3, scale: s, opacity: l });
       });
 })(jQuery);
-
-// form start here
-
-const prevBtns = document.querySelectorAll(".btn-prev");
-const nextBtns = document.querySelectorAll(".btn-next");
-const submitBtn = document.querySelector(".btn-submit");
-const progress = document.querySelectorAll("#progress");
-const inputField = document.querySelectorAll("#input-field");
-const message = document.getElementById("message");
-const formsteps = document.querySelectorAll(".form-step");
-
+const prevBtns = document.querySelectorAll(".btn-prev"),
+  nextBtns = document.querySelectorAll(".btn-next"),
+  submitBtn = document.querySelector(".btn-submit"),
+  progress = document.querySelectorAll("#progress"),
+  inputField = document.querySelectorAll("#input-field"),
+  message = document.getElementById("message"),
+  formsteps = document.querySelectorAll(".form-step");
 let formstepsNum = 0;
-
-nextBtns.forEach((btn) =>
-  btn.addEventListener("click", () => {
-    formstepsNum++;
-    updateFormStep();
-  })
-);
-
-prevBtns.forEach((btn) =>
-  btn.addEventListener("click", () => {
-    formstepsNum--;
-    updateFormStep();
-    // updateProgressbar();
-  })
-);
-
 function updateFormStep() {
-  formsteps.forEach((formStep, idx) => {
-    formStep.classList.contains("form-step_active") &&
-      formStep.classList.remove("form-step_active");
-  });
-  formsteps[formstepsNum].classList.add("form-step_active");
-
-  progress.forEach((prog) => {
-    prog.style.width =
-      Math.floor(((formstepsNum + 1) / formsteps.length) * 100) + "%";
-  });
+  formsteps.forEach((t, e) => {
+    t.classList.contains("form-step_active") &&
+      t.classList.remove("form-step_active");
+  }),
+    formsteps[formstepsNum].classList.add("form-step_active"),
+    progress.forEach((t) => {
+      t.style.width =
+        Math.floor(((formstepsNum + 1) / formsteps.length) * 100) + "%";
+    });
 }
+nextBtns.forEach((t) =>
+  t.addEventListener("click", () => {
+    formstepsNum++, updateFormStep();
+  })
+),
+  prevBtns.forEach((t) =>
+    t.addEventListener("click", () => {
+      formstepsNum--, updateFormStep();
+    })
+  );
+s;

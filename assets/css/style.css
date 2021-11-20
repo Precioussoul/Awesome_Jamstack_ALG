@@ -6,7 +6,6 @@ body {
   padding: 0;
   margin: 0;
 }
-
 body {
   position: relative;
   background-color: #000000;
@@ -110,7 +109,6 @@ hr {
 body {
   font-family: "Epilogue", sans-serif;
 }
-
 .h1,
 .h2,
 .h3,
@@ -269,11 +267,9 @@ body.tt-boxed .tt-wrap .tt-wrap {
     font-size: clamp(30px, 4vw, 37px);
   }
 }
-
 .blog-font {
   font-size: 30px !important;
 }
-
 .next-post > small {
   color: #aaa;
   font-size: 17px;
@@ -516,15 +512,12 @@ body.tt-boxed .tt-wrap .tt-wrap {
   left: 20%;
   transform: translate(-50%, 50%);
 }
-
 @media (max-width: 575px) {
   .contact-text {
     top: 12%;
     left: 31%;
   }
 }
-/* form ends here */
-
 .newsletter-box {
   position: relative;
 }
@@ -556,7 +549,6 @@ body.tt-boxed .tt-wrap .tt-wrap {
   color: transparent;
   -webkit-text-stroke: 0.8px rgb(235, 227, 227);
 }
-
 .carousel__img-2 {
   z-index: 2;
   width: 100%;
@@ -3045,11 +3037,6 @@ body:not(.tt-boxed) .tt-footer-inner,
     text-align: center;
   }
 }
-
-/* form section *
-let speak
-*/
-
 input {
   border-style: hidden;
   border-bottom-style: groove;
@@ -3065,7 +3052,6 @@ input::placeholder {
   color: transparent;
   -webkit-text-stroke: 0.6px #ccc;
 }
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -3080,9 +3066,8 @@ select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px #000 inset;
   transition: background-color 5000s ease-in-out 0s;
 }
-
 .form {
-  width: clamp(900px, 30%, 730px); /* min, val, max */
+  width: clamp(900px, 30%, 730px);
   margin: auto;
   border-radius: 0.35rem;
   padding: 2.5rem;
@@ -3125,7 +3110,6 @@ select:-webkit-autofill:focus {
     font-size: 1.2rem;
   }
 }
-
 @media (min-width: 300px) and (max-width: 577px) {
   #progress {
     content: "";
@@ -3137,7 +3121,6 @@ select:-webkit-autofill:focus {
     z-index: -1;
   }
 }
-
 .btn {
   color: transparent;
   -webkit-text-stroke: 0.6px #ccc;
@@ -3147,22 +3130,18 @@ select:-webkit-autofill:focus {
   right: 4%;
   width: 40px;
 }
-
 .btn-prev {
   left: 0;
   top: -56%;
   font-size: 25px;
 }
-
 .btn-submit {
   border: 0;
   background: transparent;
 }
-
 .input-group {
   display: block;
 }
-
 .form-step {
   position: relative;
   display: none;
@@ -3170,7 +3149,6 @@ select:-webkit-autofill:focus {
 .form-step_active {
   display: block;
 }
-
 #progress {
   content: "";
   position: absolute;
