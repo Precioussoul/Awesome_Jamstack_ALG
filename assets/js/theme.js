@@ -1441,6 +1441,25 @@ function updateFormStep() {
         Math.floor(((formstepsNum + 1) / formsteps.length) * 100) + "%";
     });
 }
+submitBtn.addEventListener("click", (e) => {
+  e.preventDefault(),
+    formsteps[formstepsNum].classList.remove("form-step_active"),
+    inputField.forEach((e) => (e.value = "")),
+    formsteps[0].classList.add("form-step_active");
+  setTimeout(
+    () =>
+      message.appendChild(
+        document.createTextNode(
+          "Welcome on board, we'll get back to you shortly"
+        )
+      ),
+    1e3
+  ),
+    setTimeout(() => {
+      (message.innerHTML = ""), progress.forEach((e) => (e.style.width = "0%"));
+    }, 5e3);
+});
+
 nextBtns.forEach((t) =>
   t.addEventListener("click", () => {
     formstepsNum++, updateFormStep();
